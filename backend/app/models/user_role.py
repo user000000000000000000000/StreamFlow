@@ -14,6 +14,3 @@ class UserRole(Base):
 
 
     id = Column(UUID, primary_key=True)
-    # Relationship
-    user_id = Column(UUID, ForeignKey("users.id", ondelete="CASCADE"), nullable=False)
-    role_id = Column(Integer, ForeignKey("roles.id", ondelete="CASCADE"), nullable=False)

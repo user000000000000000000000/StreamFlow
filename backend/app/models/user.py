@@ -30,11 +30,3 @@ class User(Base):
 	is_active = Column(Boolean, default=True)
 	is_verified = Column(Boolean, default=False)
 	last_login = Column(DateTime(timezone=True), nullable=True)
-
-	# Relationships
-	streams = relationship("Stream", back_populates="author")
-	user_theme = relationship("Usertheme", back_populates="user", cascade="all, delete-orphan")
-    
-	@property
-	def theme(self):
-	    return [ut.theme for ut in self.user_theme]

@@ -32,11 +32,3 @@ class Stream(Base):
 
 	created_at = Column(DateTime(timezone=True), server_default=func.now())
 	updated_at = Column(DateTime(timezone=True), server_default=func.now(), onupdate=func.now())
-
-	# Relationship
-	author = relationship("User", back_populates="streams")
-	stream_theme = relationship("StreamTheme", back_populates="stream", cascade="all, delete-orphan")
-    
-	@property
-	def theme(self):
-		return [st.theme for st in self.stream_theme]
